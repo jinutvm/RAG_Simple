@@ -25,16 +25,16 @@ To address this gap, Retrieval Augmented Generation (RAG) is employed. RAG enhan
 > [!NOTE]
 >
 > ### Explanation of Key Terminologies
-
+>
 > **Vector**  
 > A vector is akin to an x-dimensional array. For instance, a 3-dimensional array [a, b, c] can be visualized on a 3-dimensional axis.
-
+>
 > **Embeddings**  
 > Embeddings transform text into x-dimensional arrays based on their meanings. One widely used method, OpenAIEmbeddings, employs a 1024-dimensional vector. This means each chunk of text is converted into a 1024-parameter vector, which can be represented on a 1024-dimensional axis.
-
+>
 > **Why Convert Text to Embeddings**  
 > Computers can understand numbers but not text. Therefore, vectors are utilized to compare and grasp the semantic meaning between texts, enabling computers to process and analyze textual information.
-
+>
 > **Vector Store**  
 > Vector databases store these embedded vectors and are capable of searching for relevant chunks using various retrieval strategies, such as similarity search and Maximum Marginal Relevance (MMR).
 
