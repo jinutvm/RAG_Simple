@@ -22,19 +22,21 @@ To address this gap, Retrieval Augmented Generation (RAG) is employed. RAG enhan
    - The relevant chunks obtained from the vector store are provided to the LLM along with the question.
    - The LLM then answers the question based on the context provided by these chunks.
 
-### Explanation of Key Terminologies
+> [!NOTE]
+>
+> ### Explanation of Key Terminologies
 
-**Vector**  
-A vector is akin to an x-dimensional array. For instance, a 3-dimensional array [a, b, c] can be visualized on a 3-dimensional axis.
+> **Vector**  
+> A vector is akin to an x-dimensional array. For instance, a 3-dimensional array [a, b, c] can be visualized on a 3-dimensional axis.
 
-**Embeddings**  
-Embeddings transform text into x-dimensional arrays based on their meanings. One widely used method, OpenAIEmbeddings, employs a 1024-dimensional vector. This means each chunk of text is converted into a 1024-parameter vector, which can be represented on a 1024-dimensional axis.
+> **Embeddings**  
+> Embeddings transform text into x-dimensional arrays based on their meanings. One widely used method, OpenAIEmbeddings, employs a 1024-dimensional vector. This means each chunk of text is converted into a 1024-parameter vector, which can be represented on a 1024-dimensional axis.
 
-**Why Convert Text to Embeddings**  
-Computers can understand numbers but not text. Therefore, vectors are utilized to compare and grasp the semantic meaning between texts, enabling computers to process and analyze textual information.
+> **Why Convert Text to Embeddings**  
+> Computers can understand numbers but not text. Therefore, vectors are utilized to compare and grasp the semantic meaning between texts, enabling computers to process and analyze textual information.
 
-**Vector Store**  
-Vector databases store these embedded vectors and are capable of searching for relevant chunks using various retrieval strategies, such as similarity search and Maximum Marginal Relevance (MMR).
+> **Vector Store**  
+> Vector databases store these embedded vectors and are capable of searching for relevant chunks using various retrieval strategies, such as similarity search and Maximum Marginal Relevance (MMR).
 
 ### From Simple Implementation to Production-Ready: Navigating the Complexities of RAG
 
@@ -50,7 +52,6 @@ I01_web_loader - Load data from the webpage, embed and store in vector store(Chr
 I02_askQ - Retrieve relevant documents and feed to LLM(Llama3) to respond to the queries
 
 I03_chat - Use chat history along with the user ask. This will provide a conversation style of interaction.
-
 
 **Detailed Explanation**
 
@@ -80,6 +81,7 @@ I03_chat - Use chat history along with the user ask. This will provide a convers
 ## Include Chat history also in the conversation (Module Name: I03_chat.py)
 
 All the same as the above except for the following differences:
+
 1. The prompt will have the `chat_history` parameter as well.
 2. Use the built-in module `ChatMessageHistory` to store user asks and AI responses.
 3. While invoking the chain, along with the user ask, `chat_history` will also be provided.
