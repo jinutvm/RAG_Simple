@@ -46,5 +46,7 @@ We can begin by setting up a basic RAG system to demonstrate its capabilities. T
 
 **Programs**
 I01_web_loader - Load data from the webpage, embed and store in vector store(Chroma db)
+
 I02_askQ - Retrieve relevant documents and feed to LLM(Llama3) to respond to the queries
+
 I03_chat - Use chat history along with the user ask. This will provide a conversation style of interaction.
