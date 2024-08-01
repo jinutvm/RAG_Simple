@@ -50,3 +50,38 @@ I01_web_loader - Load data from the webpage, embed and store in vector store(Chr
 I02_askQ - Retrieve relevant documents and feed to LLM(Llama3) to respond to the queries
 
 I03_chat - Use chat history along with the user ask. This will provide a conversation style of interaction.
+
+
+**Detailed Explanation**
+
+## Load the data into Vector store (Module Name: I01_web_loader.py)
+
+1. Using Webloader, retrieve the data from a Wikipedia website. The response will be in the form of Documents.
+2. Split the documents using `RecursiveCharactorTextSplitter` with a chunk size of 1000 and an overlap of 200.
+3. Embed the chunks using `VoyageAIEmbeddings`.
+4. Store the chunks into Vectorstore (Chroma DB).
+
+## Ask Question to the document (Module Name: I02_askQ.py)
+
+1. Define the embeddings. User questions will be embedded using these embeddings before searching in the vectorstore. The same embedding methodology used to store in vectorstore should be used. Here we used `VoyageAIEmbeddings`.
+2. Connect to ChromaDB to search.
+3. Define the retriever. We are using vectorstore as the backbone for retrievers here.
+4. Define the model to be used (here LLAMA3 is used through Groq).
+5. Define the prompt to be given to the model to perform the task.
+6. Define the output parser to parse the results from the model.
+7. Create the chain using LCEL. Below steps will be performed in sequence:
+   - Using `UserAsk`, call the retriever and provide the results to dict key “context”.
+   - User Ask is passed to dict key “question”.
+   - Invoke prompt which will reformat the prompt by replacing context and question given as input.
+   - Call the model using the updated prompt.
+   - Pass the response from the model through the output parser to get the responses.
+   - Invoke the Chain with the user ask.
+
+## Include Chat history also in the conversation (Module Name: I03_chat.py)
+
+All the same as the above except for the following differences:
+1. The prompt will have the `chat_history` parameter as well.
+2. Use the built-in module `ChatMessageHistory` to store user asks and AI responses.
+3. While invoking the chain, along with the user ask, `chat_history` will also be provided.
+
+While RAG (Retrieval-Augmented Generation) can be achieved with just a few lines of code, implementing it in production applications introduces several complexities. There are multiple strategies to execute RAG effectively. In the following sections, we'll delve into each of these approaches in detail.
