@@ -44,7 +44,7 @@ While implementing Retrieval Augmented Generation (RAG) can be straightforward w
 
 We can begin by setting up a basic RAG system to demonstrate its capabilities. This initial setup will allow us to identify various challenges and assess the impact of different strategies on making the system robust and efficient for production use.
 
-### Simple Implementation
+### Simple RAG
 
 **Programs**
 I01_web_loader - Load data from the webpage, embed and store in vector store(Chroma db)
@@ -55,14 +55,15 @@ I03_chat - Use chat history along with the user ask. This will provide a convers
 
 **Detailed Explanation**
 
-## Load the data into Vector store (Module Name: I01_web_loader.py)
+#### Load the data into Vector store (Module Name: I01_web_loader.py)
 
 1. Using Webloader, retrieve the data from a Wikipedia website. The response will be in the form of Documents.
 2. Split the documents using `RecursiveCharactorTextSplitter` with a chunk size of 1000 and an overlap of 200.
 3. Embed the chunks using `VoyageAIEmbeddings`.
 4. Store the chunks into Vectorstore (Chroma DB).
 
-## Ask Question to the document (Module Name: I02_askQ.py)
+
+#### Ask Question to the document (Module Name: I02_askQ.py)
 
 1. Define the embeddings. User questions will be embedded using these embeddings before searching in the vectorstore. The same embedding methodology used to store in vectorstore should be used. Here we used `VoyageAIEmbeddings`.
 2. Connect to ChromaDB to search.
@@ -76,9 +77,10 @@ I03_chat - Use chat history along with the user ask. This will provide a convers
    - Invoke prompt which will reformat the prompt by replacing context and question given as input.
    - Call the model using the updated prompt.
    - Pass the response from the model through the output parser to get the responses.
-   - Invoke the Chain with the user ask.
+8. Invoke the Chain with the user ask.
 
-## Include Chat history also in the conversation (Module Name: I03_chat.py)
+
+#### Include Chat history also in the conversation (Module Name: I03_chat.py)
 
 All the same as the above except for the following differences:
 
