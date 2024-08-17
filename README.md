@@ -91,6 +91,9 @@ While RAG (Retrieval-Augmented Generation) can be achieved with just a few lines
 ## Additional Modules to cover LlamaIndex
 
 I04 - Uses Llama Index to answer queries. Load the files from folder Data, store in a vector DB, declare the retriever and respond to the queries
+
 I05 - By default Llama Index uses Open AI model and embeddings. Using Settings to change the model and embeddings
+
 I06 - Making the vector DB persistent. Load the contents to vector DB and make it persistent
+
 I07 - Loading the persistent DB and answer from the queries
