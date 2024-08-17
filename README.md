@@ -87,3 +87,10 @@ All the same as the above except for the following differences:
 3. While invoking the chain, along with the user ask, `chat_history` will also be provided.
 
 While RAG (Retrieval-Augmented Generation) can be achieved with just a few lines of code, implementing it in production applications introduces several complexities. There are multiple strategies to execute RAG effectively. In the following sections, we'll delve into each of these approaches in detail.
+
+## Additional Modules to cover LlamaIndex
+
+I04 - Uses Llama Index to answer queries. Load the files from folder Data, store in a vector DB, declare the retriever and respond to the queries
+I05 - By default Llama Index uses Open AI model and embeddings. Using Settings to change the model and embeddings
+I06 - Making the vector DB persistent. Load the contents to vector DB and make it persistent
+I07 - Loading the persistent DB and answer from the queries
